@@ -24,7 +24,7 @@
  * 什么函数才是回调函数？
  *  你定义的
  *  你没有调用
- *  但是最终执行了
+ *  但是最终执行了(在某个时刻或某个条件下)
  *
  * 常见的回调函数？
  *  dom事件回调函数
@@ -34,7 +34,7 @@
  *
  * 函数中的this
  *  this是什么？
- *    任何函数本质上欧式通过某个对象来调用的
+ *    任何函数本质上是通过某个对象来调用的
  *    所有函数内部都有一个变量this
  *    this的值是调用函数的当前对象
  *  如何确定this的值？
@@ -92,5 +92,5 @@ var p = new Person("res");
 console.log(p.getColor());
 console.log(p.getColor.call({ color: "red" })); // red
 document.getElementById("btn").onclick = function () {
-  console.log("click");
+  console.log(this);
 };
