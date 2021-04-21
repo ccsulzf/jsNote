@@ -5,6 +5,7 @@ console.log(123);
  *    如果没有，沿着__proto__寻找，找到返回
  *    如果最终没有找到，返回undefined
  * 作用：查找对象的属性
+ *
  */
 function Fn() {
   this.test1 = function () {
@@ -49,3 +50,22 @@ console.log(Function.prototype instanceof Object); // true
  * Object的原型对象是原型链的尽头
  */
 console.log(Object.prototype.__proto__); // null
+
+/**
+ * 读取对象的属性值时：会自动沿着原型链进行查找
+ * 设置对象的属性值时：不会查找原型链，如果当前对象中没有此属性，直接添加此属性
+ * 方法一般定义在原型中，属性一般通过构造函数定义在对象本身上
+ */
+Fn.prototype.a = "xxx";
+var fn3 = new Fn();
+var fn4 = new Fn();
+fn4.a = "yyy";
+console.log(fn3.a); // xxx
+console.log(fn4.a); // yyy
+
+console.log(Function instanceof Object); // true
+console.log(Object instanceof Function); // true
+console.log(Object instanceof Object); // true
+console.log({} instanceof Object); // true
+
+console.log(Fn instanceof Object);
